@@ -63,7 +63,7 @@ flowchart LR
 
 ## Roadmap
 
-- [ ] **Foundation**: project layout, config, logging, health checks, CI
+- [x] **Foundation**: project layout, config, logging, health checks, CI
 - [ ] **Ingestion**: loaders (PDF, DOCX, Markdown, HTML), structure-aware chunking
 - [ ] **Evaluation harness**: golden dataset and CI regression gates
 - [ ] **Retrieval**: dense + BM25 + RRF, then reranking and late interaction
@@ -75,7 +75,31 @@ flowchart LR
 
 ## Quick start
 
-> Provena is in early development. Setup instructions will land with the foundation milestone.
+Requires Python 3.12+ and [uv](https://docs.astral.sh/uv/).
+
+```bash
+git clone https://github.com/HemashreeVI/provena.git
+cd provena
+uv sync                 # install dependencies
+cp .env.example .env    # optional: adjust settings
+uv run provena          # http://localhost:8000/docs
+```
+
+Or run the API together with Qdrant in Docker:
+
+```bash
+docker compose up --build
+curl localhost:8000/ready
+```
+
+### Development
+
+```bash
+make check   # lint + strict type check + tests (what CI runs)
+make fmt     # auto-fix formatting
+```
+
+See [docs/architecture.md](docs/architecture.md) for the design and code layout.
 
 ## Contributing
 
