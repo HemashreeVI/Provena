@@ -1,0 +1,167 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 320" width="900" height="320" role="img" aria-label="Provena: a robot walks, a cat crawls, and a little robot pops up to say what's up">
+  <defs>
+    <linearGradient id="sky" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0b1020"/>
+      <stop offset="1" stop-color="#1b1640"/>
+    </linearGradient>
+    <linearGradient id="title" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#a78bfa"/>
+      <stop offset="0.5" stop-color="#60a5fa"/>
+      <stop offset="1" stop-color="#34d399"/>
+    </linearGradient>
+    <clipPath id="above-ground">
+      <rect x="0" y="0" width="900" height="262"/>
+    </clipPath>
+  </defs>
+
+  <style>
+    .twinkle { animation: twinkle 3s ease-in-out infinite; }
+    .t2 { animation-delay: -1s; } .t3 { animation-delay: -2s; }
+    @keyframes twinkle { 0%,100% { opacity: .25 } 50% { opacity: 1 } }
+
+    /* walking robot: left to right */
+    .walker { animation: walk 14s linear infinite; }
+    @keyframes walk { from { transform: translate(-80px, 262px) } to { transform: translate(980px, 262px) } }
+    .bob { animation: bob .5s ease-in-out infinite alternate; }
+    @keyframes bob { from { transform: translateY(0) } to { transform: translateY(-4px) } }
+    .leg, .arm { transform-box: fill-box; transform-origin: 50% 0; }
+    .leg-a { animation: swing .5s ease-in-out infinite alternate; }
+    .leg-b { animation: swing .5s ease-in-out infinite alternate-reverse; }
+    .arm-a { animation: swing .5s ease-in-out infinite alternate-reverse; }
+    .arm-b { animation: swing .5s ease-in-out infinite alternate; }
+    @keyframes swing { from { transform: rotate(-22deg) } to { transform: rotate(22deg) } }
+    .blink { transform-box: fill-box; transform-origin: center; animation: blink 4s infinite; }
+    @keyframes blink { 0%,92%,100% { transform: scaleY(1) } 95% { transform: scaleY(.1) } }
+    .antenna { animation: glow 1s ease-in-out infinite alternate; }
+    @keyframes glow { from { fill: #f472b6 } to { fill: #fde047 } }
+
+    /* crawling cat: right to left */
+    .cat { animation: crawl 10s linear infinite; }
+    @keyframes crawl { from { transform: translate(980px, 262px) } to { transform: translate(-120px, 262px) } }
+    .paw { transform-box: fill-box; transform-origin: 50% 0; }
+    .paw-a { animation: paw .35s ease-in-out infinite alternate; }
+    .paw-b { animation: paw .35s ease-in-out infinite alternate-reverse; }
+    @keyframes paw { from { transform: rotate(-28deg) } to { transform: rotate(28deg) } }
+    .tail { transform-box: fill-box; transform-origin: 0% 100%; animation: wag .6s ease-in-out infinite alternate; }
+    @keyframes wag { from { transform: rotate(-12deg) } to { transform: rotate(18deg) } }
+    .cat-body { animation: bob .35s ease-in-out infinite alternate; }
+
+    /* pop-up robot */
+    .popper { animation: pop 7s cubic-bezier(.34,1.56,.64,1) infinite; }
+    @keyframes pop {
+      0%, 8%   { transform: translateY(95px) }
+      18%, 72% { transform: translateY(0) }
+      84%,100% { transform: translateY(95px) }
+    }
+    .wave { transform-box: fill-box; transform-origin: 50% 100%; animation: wave .4s ease-in-out infinite alternate; }
+    @keyframes wave { from { transform: rotate(-25deg) } to { transform: rotate(25deg) } }
+    .bubble { opacity: 0; transform-box: fill-box; transform-origin: 0% 100%; animation: bubble 7s ease-out infinite; }
+    @keyframes bubble {
+      0%, 20%  { opacity: 0; transform: scale(.3) }
+      26%, 68% { opacity: 1; transform: scale(1) }
+      74%,100% { opacity: 0; transform: scale(.3) }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { animation-duration: 0s !important; animation-iteration-count: 1 !important; }
+    }
+  </style>
+
+  <rect width="900" height="320" rx="18" fill="url(#sky)"/>
+
+  <!-- stars -->
+  <g fill="#e0e7ff">
+    <circle class="twinkle" cx="60" cy="40" r="1.6"/>
+    <circle class="twinkle t2" cx="150" cy="90" r="1.2"/>
+    <circle class="twinkle t3" cx="240" cy="30" r="1.8"/>
+    <circle class="twinkle" cx="690" cy="50" r="1.4"/>
+    <circle class="twinkle t2" cx="780" cy="100" r="1.8"/>
+    <circle class="twinkle t3" cx="850" cy="36" r="1.2"/>
+    <circle class="twinkle t2" cx="610" cy="120" r="1.1"/>
+    <circle class="twinkle" cx="320" cy="130" r="1.1"/>
+  </g>
+
+  <!-- title -->
+  <text x="450" y="98" text-anchor="middle" font-family="'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-size="64" font-weight="800" fill="url(#title)" letter-spacing="2">Provena</text>
+  <text x="450" y="134" text-anchor="middle" font-family="'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-size="18" fill="#c7d2fe">Every answer, traced to its source.</text>
+
+  <!-- ground -->
+  <rect x="0" y="262" width="900" height="58" fill="#14112e"/>
+  <line x1="0" y1="262" x2="900" y2="262" stroke="#4c3f9e" stroke-width="2"/>
+  <g stroke="#2e2766" stroke-width="2" stroke-linecap="round">
+    <line x1="40" y1="285" x2="90" y2="285"/><line x1="200" y1="298" x2="260" y2="298"/>
+    <line x1="420" y1="288" x2="470" y2="288"/><line x1="620" y1="300" x2="690" y2="300"/>
+    <line x1="790" y1="286" x2="840" y2="286"/>
+  </g>
+
+  <!-- pop-up robot (rises out of the ground) -->
+  <g clip-path="url(#above-ground)">
+    <g transform="translate(770 262)">
+      <g class="popper">
+        <rect x="-26" y="-34" width="52" height="40" rx="10" fill="#34d399"/>
+        <rect x="-14" y="-22" width="28" height="14" rx="4" fill="#065f46"/>
+        <circle cx="0" cy="-15" r="3" fill="#6ee7b7"/>
+        <rect x="-24" y="-74" width="48" height="38" rx="12" fill="#a7f3d0"/>
+        <g class="blink"><circle cx="-10" cy="-56" r="5" fill="#0b1020"/><circle cx="10" cy="-56" r="5" fill="#0b1020"/></g>
+        <circle cx="-8" cy="-58" r="1.6" fill="#fff"/><circle cx="12" cy="-58" r="1.6" fill="#fff"/>
+        <path d="M-7 -46 Q0 -40 7 -46" stroke="#0b1020" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+        <circle cx="-17" cy="-47" r="3.5" fill="#f9a8d4" opacity=".8"/><circle cx="17" cy="-47" r="3.5" fill="#f9a8d4" opacity=".8"/>
+        <line x1="0" y1="-74" x2="0" y2="-86" stroke="#a7f3d0" stroke-width="3"/>
+        <circle class="antenna" cx="0" cy="-89" r="5"/>
+        <rect class="wave" x="26" y="-62" width="9" height="28" rx="4.5" fill="#34d399"/>
+        <rect x="-35" y="-30" width="9" height="24" rx="4.5" fill="#34d399"/>
+      </g>
+    </g>
+  </g>
+  <!-- speech bubble -->
+  <g transform="translate(790 150)">
+    <g class="bubble">
+      <rect x="0" y="0" width="104" height="40" rx="14" fill="#fff"/>
+      <path d="M14 38 L4 56 L30 38 Z" fill="#fff"/>
+      <text x="52" y="26" text-anchor="middle" font-family="'Segoe UI', Inter, Helvetica, Arial, sans-serif" font-size="16" font-weight="700" fill="#1e1b4b">What's up?</text>
+    </g>
+  </g>
+
+  <!-- crawling cat -->
+  <g class="cat">
+    <g class="cat-body">
+      <path class="tail" d="M34 -22 C54 -26 58 -50 48 -60" stroke="#8b949e" stroke-width="7" fill="none" stroke-linecap="round"/>
+      <rect class="paw paw-a" x="-24" y="-14" width="8" height="14" rx="4" fill="#6e7681"/>
+      <rect class="paw paw-b" x="-12" y="-14" width="8" height="14" rx="4" fill="#8b949e"/>
+      <rect class="paw paw-b" x="14" y="-14" width="8" height="14" rx="4" fill="#6e7681"/>
+      <rect class="paw paw-a" x="26" y="-14" width="8" height="14" rx="4" fill="#8b949e"/>
+      <ellipse cx="6" cy="-22" rx="34" ry="15" fill="#8b949e"/>
+      <path d="M-46 -44 L-42 -62 L-32 -50 Z" fill="#8b949e"/>
+      <path d="M-20 -50 L-12 -64 L-8 -46 Z" fill="#8b949e"/>
+      <path d="M-42 -50 L-40 -58 L-35 -51 Z" fill="#f9a8d4"/>
+      <circle cx="-26" cy="-34" r="20" fill="#8b949e"/>
+      <ellipse cx="-26" cy="-30" rx="15" ry="11" fill="#f5d0c5"/>
+      <g class="blink"><ellipse cx="-33" cy="-36" rx="3" ry="4" fill="#0b1020"/><ellipse cx="-19" cy="-36" rx="3" ry="4" fill="#0b1020"/></g>
+      <path d="M-28 -29 L-24 -29 L-26 -26 Z" fill="#db2777"/>
+      <path d="M-30 -24 Q-26 -21 -22 -24" stroke="#0b1020" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+      <g stroke="#e5e7eb" stroke-width="1" stroke-linecap="round">
+        <line x1="-38" y1="-28" x2="-52" y2="-31"/><line x1="-38" y1="-25" x2="-52" y2="-24"/>
+        <line x1="-14" y1="-28" x2="-2" y2="-31"/><line x1="-14" y1="-25" x2="-2" y2="-24"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- walking robot -->
+  <g class="walker">
+    <g class="bob">
+      <rect class="leg leg-a" x="-15" y="-24" width="11" height="24" rx="5" fill="#7c3aed"/>
+      <rect class="leg leg-b" x="4" y="-24" width="11" height="24" rx="5" fill="#6d28d9"/>
+      <rect class="arm arm-a" x="-34" y="-60" width="10" height="30" rx="5" fill="#7c3aed"/>
+      <rect x="-25" y="-66" width="50" height="44" rx="12" fill="#8b5cf6"/>
+      <rect class="arm arm-b" x="24" y="-60" width="10" height="30" rx="5" fill="#6d28d9"/>
+      <rect x="-13" y="-56" width="26" height="18" rx="5" fill="#1e1b4b"/>
+      <path d="M-7 -47 L-2 -42 L7 -52" stroke="#34d399" stroke-width="3" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+      <rect x="-22" y="-104" width="44" height="36" rx="12" fill="#c4b5fd"/>
+      <g class="blink"><circle cx="-9" cy="-87" r="5" fill="#0b1020"/><circle cx="9" cy="-87" r="5" fill="#0b1020"/></g>
+      <circle cx="-7" cy="-89" r="1.6" fill="#fff"/><circle cx="11" cy="-89" r="1.6" fill="#fff"/>
+      <path d="M-6 -77 Q0 -72 6 -77" stroke="#0b1020" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+      <line x1="0" y1="-104" x2="0" y2="-116" stroke="#c4b5fd" stroke-width="3"/>
+      <circle class="antenna" cx="0" cy="-119" r="5"/>
+    </g>
+  </g>
+</svg>
